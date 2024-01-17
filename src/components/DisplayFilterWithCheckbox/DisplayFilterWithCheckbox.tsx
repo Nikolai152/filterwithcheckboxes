@@ -4,9 +4,8 @@ import { InputText } from "primereact/inputtext";
 import { Divider } from "primereact/divider";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { DisplayFilterWithCheckboxProps } from "../../types/FilterWithCheckbox";
-import "./DisplayFilterWithCheckbox.css";
-import styles from "./DisplayFilterWithCheckbox.module.css";
-
+import styles from "./DisplayFilterWithCheckbox.module.scss";
+//piSearch заменить на iconSearch
 export default function DisplayFilterWithCheckbox({
   categoriesData,
   searchText,
@@ -16,22 +15,32 @@ export default function DisplayFilterWithCheckbox({
   selectedCategories,
 }: DisplayFilterWithCheckboxProps) {
   return (
-    <div className={`card-all ${styles.cardAll}`}>
-      <div className={`card-input ${styles.cardInput}`}>
-        <div className={`p-input-icon ${styles.inputIcon}`}>
-          <i className={`pi pi-search piSearch ${styles.piSearch}`} />
+    <div className={styles.cardAll}>
+      <div className={styles.cardInput}>
+        <div className={styles.inputIcon}>
+          {/* <span className="p-input-icon-left"> */}
+          <span className="p-input-icon-left">
+            <i className={`pi pi-search ${styles.iconSearch}`}/>
+            <InputText 
+            className={styles.input}
+            placeholder="Найти"
+            onChange={(e) => setSearchText(e.target.value)}
+            value={searchText}/>
+          </span>
+
+          {/* <i className={`pi pi-search piSearch ${styles.piSearch}`} />
           <InputText
             className={styles.input}
             placeholder="Найти"
             onChange={(e) => setSearchText(e.target.value)}
             value={searchText}
-          />
+          /> */}
         </div>
       </div>
       <Divider className={styles.divider} />
 
-      <div className={`card-box ${styles.cardBox}`}>
-        <ScrollPanel className={`scroll-panel ${styles.scrollPanel}`}>
+      <div className={styles.cardBox}>
+        <ScrollPanel className={styles.scrollPanel}>
           <div classNamep-scrollpanel-wrapper>
             <div p-scrollpanel-content>
               <div className={styles.list}>

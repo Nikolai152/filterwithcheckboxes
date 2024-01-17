@@ -4,8 +4,7 @@ import DisplayFilterWithCheckbox from "../DisplayFilterWithCheckbox/DisplayFilte
 
 const categoriesData: Category[] = [
   { name: "Все", key: "all", checked: false },
-  { name: "Атрибут 1", key: "A", checked: false },
-  
+  { name: "Атрибут 1", key: "A", checked: false },  
   { name: "Атрибут 2", key: "B", checked: false },
   { name: "Атрибут 3", key: "C", checked: false },
   { name: "Атрибут 4", key: "D", checked: false },
@@ -24,7 +23,7 @@ const categoriesData: Category[] = [
 
 // export default function FilterWithCheckbox({ isselectAll }: FilterWithCheckboxProps) {
 export default function FilterWithCheckbox() {
-  const [selectedCategories, setSelectedCategories] = useState<Category[]>([
+  const [selectedCategories, setSelectedCategories] = useState<Category[] >([
     categoriesData[1],
   ]);
   const [searchText, setSearchText] = useState<string>("");

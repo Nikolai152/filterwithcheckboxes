@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FilterWithCheckbox from "./filter";
+import FilterWithCheckbox from "./FilterWithCheckbox"
 
 const meta = {
   title: "Example/FilterWithCheckbox",
