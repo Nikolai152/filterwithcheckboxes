@@ -5,9 +5,7 @@ import { Divider } from "primereact/divider";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { DisplayFilterWithCheckboxProps } from "../../types/FilterWithCheckbox";
 import styles from "./DisplayFilterWithCheckbox.module.scss";
-//piSearch заменить на iconSearch
 export default function DisplayFilterWithCheckbox({
-  categoriesData,
   searchText,
   setSearchText,
   handlerSearchInputChange,
@@ -17,8 +15,7 @@ export default function DisplayFilterWithCheckbox({
   return (
     <div className={styles.cardAll}>
       <div className={styles.cardInput}>
-        <div className={styles.inputIcon}>
-          {/* <span className="p-input-icon-left"> */}
+        <div className={styles.inputIcon}>          
           <span className="p-input-icon-left">
             <i className={`pi pi-search ${styles.iconSearch}`}/>
             <InputText 
@@ -27,18 +24,9 @@ export default function DisplayFilterWithCheckbox({
             onChange={(e) => setSearchText(e.target.value)}
             value={searchText}/>
           </span>
-
-          {/* <i className={`pi pi-search piSearch ${styles.piSearch}`} />
-          <InputText
-            className={styles.input}
-            placeholder="Найти"
-            onChange={(e) => setSearchText(e.target.value)}
-            value={searchText}
-          /> */}
         </div>
       </div>
       <Divider className={styles.divider} />
-
       <div className={styles.cardBox}>
         <ScrollPanel className={styles.scrollPanel}>
           <div classNamep-scrollpanel-wrapper>
