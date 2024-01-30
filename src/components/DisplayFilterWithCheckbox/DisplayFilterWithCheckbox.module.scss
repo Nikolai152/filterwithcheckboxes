@@ -1,11 +1,9 @@
-:root {
-  --card-width: 292px;
-  --input-width: 276px;
-  --input-height: 32px;
-}
+$cardWidth: 292px;
+$inputWidth: 276px;
+$inputHeight: 32px;
 
 .cardAll {
-  width: var(--card-width);
+  width: $cardWidth;
   height: 512px;
   background-color: white;
   border-radius: 8px;
@@ -13,7 +11,7 @@
 }
 
 .cardInput {
-  width: var(--card-width);
+  width: $cardWidth;
   height: 48px;
   display: flex;
   justify-content: center;
@@ -21,46 +19,29 @@
 }
 
 .inputIcon {
-  width: var(--input-width);
-  height: var(--input-height);
-  display: flex; 
+  width: $inputWidth;
+  height: $inputHeight;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.iconSearch {
+.iconSearch:global(.pi) {
   font-size: 12px;
-  padding-top: 2px;
-  color: #1a1a1a;
+  padding-top: 4px;
   font-weight: bold;
-  margin-left: -2px;
 }
 
 .input {
-  width: var(--input-width);
-  height: var(--input-height);
-  padding-left: 32px;
-  font-size: 13px;
-  font-weight: 400;
-  border: 1px solid #c7c7c7;
-  border-radius: 4px;
-}
-
-.input::placeholder {
-  color: #c7c7c7;
-}
-
-.divider {
-  margin: 0;
-  padding: 0;
-  border: 1px;
-  color: #e6e6e6;
+  width: $inputWidth;
+  height: $inputHeight;
 }
 
 .cardBox {
-  width: var(--card-width);
+  width: $cardWidth;
   height: 464px;
   padding: 8px 10px 8px 8px;
+  border-top: 1px solid #e6e6e6;
 }
 
 .scrollPanel {
@@ -74,16 +55,29 @@
   justify-content: baseline;
 }
 
+.selectAll {
+  width: 100%;
+  display: flex;
+  padding: 7px;
+  height: $inputHeight;
+}
+
+.labelTitleSelectAll {
+  //  display: block;
+  font-size: 13px;
+  padding-left: 6px;
+  padding-top: 1px;
+}
+
 .listCard {
-  width: var(--input-width);
-  height: 464px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .cardCheckboxLabel {
   display: flex;
-  height: var(--input-height);
+  height: $inputHeight;
   padding: 7px;
 }
 
@@ -95,37 +89,24 @@
 }
 
 .cardAll {
-  :global(.p-scrollpanel-wrapper) {
-    overflow: visible;
-  }
-  :global(.p-scrollpanel-content) {
-    overflow-y: hidden;
-  }
   :global(.p-scrollpanel-bar) {
-    background: #c7c7c7;
-    border: 0 none;
     border-radius: 2px;
     opacity: 1;
   }
   :global(.p-scrollpanel-bar-y) {
     width: 4px;
   }
-  :global(.p-scrollpanel-bar-x) {
-    overflow-x: hidden;
-  }
   :global(.p-checkbox .p-checkbox-box .p-checkbox-icon.p-icon) {
     width: 10px;
     height: 8px;
   }
   :global(.p-checkbox-box) {
-    border: 2px solid #c7c7c7;
-    background: #ffffff;
     width: 18px;
     height: 18px;
     border-radius: 3px;
   }
-  :global(.p-checkbox .p-checkbox-box.p-highlight) {
-    border-color: #3368b8;
-    background: #3368b8;
-  }
+}
+
+.input::placeholder {
+  color: #c7c7c7;
 }
