@@ -14,27 +14,25 @@ const FilterWithCheckbox: FC<IFilterWithCheckboxProps> = (props) => {
   const [searchText, setSearchText] = useState<string>("");
 
   const handlerSearchInputChange = (e: {
-    value: { key: string };
+    value: string;
     checked: boolean;
   }): void => {
     let selectedCategories: string[] = [];
 
     if (e.checked) {
-      const selectedCategory = categoriesData.find(
-        (el) => el.key === e.value.key
-      );
+      const selectedCategory = categoriesData.find((el) => el.id === e.value);
       if (selectedCategory) {
-        selectedCategories = [...value, selectedCategory.key];
+        selectedCategories = [...value, selectedCategory.id];
       }
     } else {
-      selectedCategories = value.filter((key) => key !== e.value.key);
+      selectedCategories = value.filter((key) => key !== e.value);
     }
     onValueChange(selectedCategories);
   };
 
   const handleSelectAllChange = (e: { checked: boolean }) => {
     const selectedCategories = e.checked
-      ? filteredCategories.map((it) => it.key)
+      ? filteredCategories.map((it) => it.id)
       : [];
     onValueChange(selectedCategories);
   };

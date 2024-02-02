@@ -7,7 +7,7 @@ import styles from "./DisplayFilterWithCheckbox.module.scss";
 
 export interface Category {
   name: string;
-  key: string;
+  id: string;
   checked: boolean;
 }
 
@@ -15,10 +15,7 @@ export interface IDisplayFilterWithCheckboxProps {
   categoriesData: Category[];
   searchText: string;
   setSearchText: (text: string) => void;
-  handlerSearchInputChange: (e: {
-    value: { key: string };
-    checked: boolean;
-  }) => void;
+  handlerSearchInputChange: (e: { value: string; checked: boolean }) => void;
   filteredCategories: Category[];
   selectedCategoryIds: string[];
   handleSelectAllChange: (e: { checked: boolean }) => void;
@@ -84,21 +81,21 @@ const DisplayFilterWithCheckbox: FC<IDisplayFilterWithCheckboxProps> = (
             <div className={styles.listCard}>
               {filteredCategories.map((category) => {
                 return (
-                  <div key={category.key} className={styles.cardCheckboxLabel}>
+                  <div key={category.id} className={styles.cardCheckboxLabel}>
                     <Checkbox
                       className={styles.checkbox}
-                      inputId={category.key}
+                      inputId={category.id}
                       name="category"
                       value={category}
                       onChange={(e: CheckboxChangeEvent): void =>
                         handlerSearchInputChange({
-                          value: { key: category.key },
+                          value: category.id,
                           checked: !!e.checked,
                         })
                       }
-                      checked={selectedCategoryIds.includes(category.key)}
+                      checked={selectedCategoryIds.includes(category.id)}
                     />
-                    <label htmlFor={category.key} className={styles.labelTitle}>
+                    <label htmlFor={category.id} className={styles.labelTitle}>
                       {category.name}
                     </label>
                   </div>
