@@ -1,9 +1,9 @@
-import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
-import { InputText } from "primereact/inputtext";
-import { ScrollPanel } from "primereact/scrollpanel";
-import { ChangeEvent, FC } from "react";
+import { Checkbox, CheckboxChangeEvent } from 'primereact/checkbox';
+import { InputText } from 'primereact/inputtext';
+import { ScrollPanel } from 'primereact/scrollpanel';
+import { ChangeEvent, FC } from 'react';
 
-import styles from "./DisplayFilterWithCheckbox.module.scss";
+import styles from './DisplayFilterWithCheckbox.module.scss';
 
 export interface Category {
   name: string;
@@ -21,9 +21,9 @@ export interface IDisplayFilterWithCheckboxProps {
   handleSelectAllChange: (e: { checked: boolean }) => void;
 }
 
-const DisplayFilterWithCheckbox: FC<IDisplayFilterWithCheckboxProps> = (
-  props
-) => {
+const DisplayFilterWithCheckbox: FC<
+  IDisplayFilterWithCheckboxProps
+> = props => {
   const {
     searchText,
     setSearchText,
@@ -53,11 +53,11 @@ const DisplayFilterWithCheckbox: FC<IDisplayFilterWithCheckboxProps> = (
       <div className={styles.cardBox}>
         <ScrollPanel className={styles.scrollPanel}>
           <div className={styles.list}>
-            {!searchText && ( //
-              <div className={styles.selectAll}>
+            {!searchText && (
+              <div className={styles.cardCheckboxLabel}>
                 <Checkbox
                   inputId="selectAll"
-                  className={styles.selectAllCheckbox}
+                  className={styles.checkbox}
                   name="selectAll"
                   value="selectAll"
                   onChange={(e: CheckboxChangeEvent) =>
@@ -69,17 +69,14 @@ const DisplayFilterWithCheckbox: FC<IDisplayFilterWithCheckboxProps> = (
                     selectedCategoryIds.length === props.categoriesData.length
                   }
                 />
-                <label
-                  className={styles.labelTitleSelectAll}
-                  htmlFor="selectAll"
-                >
+                <label className={styles.labelTitle} htmlFor="selectAll">
                   Выбрать все
                 </label>
               </div>
             )}
 
             <div className={styles.listCard}>
-              {filteredCategories.map((category) => {
+              {filteredCategories.map(category => {
                 return (
                   <div key={category.id} className={styles.cardCheckboxLabel}>
                     <Checkbox

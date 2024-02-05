@@ -1,7 +1,8 @@
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
+
 import DisplayFilterWithCheckbox, {
   Category,
-} from "../DisplayFilterWithCheckbox/DisplayFilterWithCheckbox";
+} from '../DisplayFilterWithCheckbox/DisplayFilterWithCheckbox';
 
 interface IFilterWithCheckboxProps {
   value: string[];
@@ -9,9 +10,9 @@ interface IFilterWithCheckboxProps {
   categoriesData: Category[];
 }
 
-const FilterWithCheckbox: FC<IFilterWithCheckboxProps> = (props) => {
+const FilterWithCheckbox: FC<IFilterWithCheckboxProps> = props => {
   const { value, onValueChange, categoriesData } = props;
-  const [searchText, setSearchText] = useState<string>("");
+  const [searchText, setSearchText] = useState<string>('');
 
   const handlerSearchInputChange = (e: {
     value: string;
@@ -20,26 +21,28 @@ const FilterWithCheckbox: FC<IFilterWithCheckboxProps> = (props) => {
     let selectedCategories: string[] = [];
 
     if (e.checked) {
-      const selectedCategory = categoriesData.find((el) => el.id === e.value);
+      const selectedCategory = categoriesData.find(el => el.id === e.value);
+
       if (selectedCategory) {
         selectedCategories = [...value, selectedCategory.id];
       }
     } else {
-      selectedCategories = value.filter((key) => key !== e.value);
+      selectedCategories = value.filter(key => key !== e.value);
     }
     onValueChange(selectedCategories);
   };
 
+  const filteredCategories = categoriesData.filter(category =>
+    category.name.toLowerCase().includes(searchText.toLowerCase()),
+  );
+
   const handleSelectAllChange = (e: { checked: boolean }) => {
     const selectedCategories = e.checked
-      ? filteredCategories.map((it) => it.id)
+      ? filteredCategories.map(it => it.id)
       : [];
+
     onValueChange(selectedCategories);
   };
-
-  const filteredCategories = categoriesData.filter((category) =>
-    category.name.toLowerCase().includes(searchText.toLowerCase())
-  );
 
   return (
     <DisplayFilterWithCheckbox
